@@ -1,270 +1,187 @@
-/* --- VARIABLES --- */
-:root {
-    --bg: #020617;
-    --primary: #38bdf8;
-    --secondary: #818cf8;
-    --glass: rgba(255, 255, 255, 0.03);
-    --border: rgba(255, 255, 255, 0.1);
-    --text: #ffffff;
-}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio | Innovator</title>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
 
-/* --- RESET & BASIC --- */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    cursor: none; /* Hide default cursor */
-    scroll-behavior: smooth;
-}
+    <div class="gate-wrapper">
+        <div class="gate-left"></div>
+        <div class="gate-right"></div>
+        
+        <div class="loader-content">
+            <div id="typing-text" class="typing-text"></div>
+            <div class="loader-bar"></div>
+        </div>
+    </div>
 
-body {
-    background-color: var(--bg);
-    color: var(--text);
-    font-family: 'Inter', sans-serif;
-    overflow-x: hidden;
-    /* Mesh gradient background */
-    background-image: radial-gradient(circle at 50% -20%, #1e293b, #020617);
-    min-height: 100vh;
-}
+    <div class="cursor-outline"></div>
+    <div class="cursor-dot"></div>
 
-/* --- GATE ANIMATION STYLES --- */
-.gate-wrapper {
-    position: fixed;
-    inset: 0;
-    z-index: 9999;
-    display: flex;
-    width: 100vw;
-    height: 100vh;
-}
+    <nav>
+        <div class="logo">RAiot<span>.Labs</span></div>
+        <ul>
+            <li><a href="#hero">Home</a></li>
+            <li><a href="#bio">About</a></li>
+            <li><a href="#status">Status</a></li>
+            <li><a href="#projects">Work</a></li>
+        </ul>
+    </nav>
 
-.gate-left, .gate-right {
-    width: 50%;
-    height: 100%;
-    background: #000;
-    border: 1px solid var(--border);
-    position: relative;
-}
+    <header id="hero">
+        <div class="hero" data-aos="zoom-out-up">
+            <h1 class="hero-title">Building the <span class="gradient-text">Future</span></h1>
+            <p>B.Tech CSE | Python Developer | IoT Engineer</p>
+            <div class="hero-btns">
+                <a href="#projects" class="btn-primary">View Projects</a>
+            </div>
+        </div>
+    </header>
 
-.loader-content {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 10000;
-    text-align: center;
-    width: 100%;
-}
+    <section id="bio" class="content-section" data-aos="fade-up">
+        <div class="about-container">
+            <div class="about-text card">
+                <h2 class="section-title">Who <span class="gradient-text">Am I</span></h2>
+                <p>
+                    I am <strong>Ujjwal Tiwari a B.tech CSE student</strong> and a tech enthusiast who loves bridging the gap between software and the real world. 
+                </p>
+                <br>
+                <p>
+                    Currently a trainee at <strong>RAiot Labs</strong>, I spend my days building <strong>IoT architectures</strong> and coding intelligent systems like my voice assistant, <strong>Bixu</strong>.
+                </p>
+                <br>
+                <p>
+                    I don't just write code; I optimize workflows. As an <strong>Arch Linux (Hyprland)</strong> user, I value efficiency and performance in everything I build—whether it's a Python algorithm or a 1-meter RC plane fuselage.
+                </p>
+                
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-github"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                    <a href="mailto:your-email@example.com"><i class="fas fa-envelope"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
 
-/* Typing Effect Styles */
-.typing-text {
-    font-family: 'Courier New', monospace;
-    font-size: 1.5rem;
-    color: var(--primary);
-    min-height: 2rem;
-    margin-bottom: 20px;
-    letter-spacing: 2px;
-}
+    <section id="status" class="content-section" data-aos="fade-up">
+        <h2 class="section-title">Current Focus</h2>
+        <div class="card status-card">
+            <div class="card-content">
+                <h3><i class="fas fa-microchip"></i> Trainee @ RAiot Labs</h3>
+                <p>Currently specializing in <strong>IoT Architecture</strong>, mastering <strong>Python</strong> for AI integration, and building full-stack hardware solutions.</p>
+                <div class="tags">
+                    <span>IoT</span><span>Python</span><span>Linux</span><span>HTML/CSS</span>
+                </div>
+            </div>
+        </div>
+    </section>
 
-.typing-text::after {
-    content: '|';
-    animation: blink 1s infinite;
-}
+    <section id="projects" class="content-section">
+        <h2 class="section-title" data-aos="fade-up">My Creations</h2>
+        <div class="project-grid">
+            <div class="card" data-aos="fade-up" data-aos-delay="100">
+                <div class="card-content">
+                    <h3>Bixu AI Assistant</h3>
+                    <p>Voice-activated assistant powered by local Ollama LLMs and Python.</p>
+                </div>
+            </div>
+            <div class="card" data-aos="fade-up" data-aos-delay="200">
+                <div class="card-content">
+                    <h3>Smart Attendance</h3>
+                    <p>Facial recognition system with IoT sensors built at RAiot Labs.</p>
+                </div>
+            </div>
+            <div class="card" data-aos="fade-up" data-aos-delay="300">
+                <div class="card-content">
+                    <h3>RC Aero-Design</h3>
+                    <p>Custom 1-meter fuselage RC plane design for IIT Techfests.</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-@keyframes blink {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0; }
-}
+    <section id="certs" class="content-section" data-aos="fade-up">
+        <h2 class="section-title">Certifications</h2>
+        <div class="card cert-card">
+            <i class="fas fa-award gradient-text" style="font-size: 3rem; margin-bottom: 15px;"></i>
+            <h3>Oracle Certified Professional</h3>
+            <p>Expertise in Java and Database Management.</p>
+        </div>
+    </section>
 
-.loader-bar {
-    width: 0%;
-    height: 3px;
-    background: var(--primary);
-    box-shadow: 0 0 15px var(--primary);
-    margin: 0 auto;
-    max-width: 300px;
-}
+    <footer>
+        <p>Built on Windows • Deployed with Git</p>
+    </footer>
 
-/* --- CUSTOM CURSOR --- */
-.cursor-dot {
-    width: 8px;
-    height: 8px;
-    background-color: var(--primary);
-    position: fixed;
-    top: 0; left: 0;
-    transform: translate(-50%, -50%);
-    border-radius: 50%;
-    z-index: 9999;
-    pointer-events: none;
-}
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        // --- 1. TYPING INTRO & GATE ANIMATION LOGIC ---
+        const textElement = document.getElementById("typing-text");
+        const phrases = ["Initializing System...", "Welcome to my Workspace."];
+        let phraseIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
 
-.cursor-outline {
-    width: 40px;
-    height: 40px;
-    border: 2px solid var(--secondary);
-    position: fixed;
-    top: 0; left: 0;
-    transform: translate(-50%, -50%);
-    border-radius: 50%;
-    z-index: 9998;
-    pointer-events: none;
-    transition: width 0.2s, height 0.2s;
-}
+        function typeEffect() {
+            const currentPhrase = phrases[phraseIndex];
+            
+            if (isDeleting) {
+                textElement.textContent = currentPhrase.substring(0, charIndex--);
+            } else {
+                textElement.textContent = currentPhrase.substring(0, charIndex++);
+            }
 
-/* --- NAVIGATION --- */
-nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 2rem 10%;
-    position: fixed;
-    width: 100%;
-    top: 0;
-    z-index: 100;
-    background: rgba(2, 6, 23, 0.8);
-    backdrop-filter: blur(10px);
-}
+            let typeSpeed = isDeleting ? 50 : 100;
 
-.logo { font-size: 1.5rem; font-weight: bold; }
-.logo span { color: var(--primary); }
+            if (!isDeleting && charIndex === currentPhrase.length) {
+                typeSpeed = 1000; // Pause at end of phrase
+                isDeleting = true;
+            } else if (isDeleting && charIndex === 0) {
+                isDeleting = false;
+                phraseIndex++;
+                typeSpeed = 500;
+            }
 
-nav ul { display: flex; list-style: none; }
-nav ul li { margin-left: 30px; }
-nav ul li a { 
-    color: white; 
-    text-decoration: none; 
-    font-weight: 500;
-    transition: color 0.3s;
-}
-nav ul li a:hover { color: var(--primary); }
+            if (phraseIndex < phrases.length) {
+                setTimeout(typeEffect, typeSpeed);
+            } else {
+                // Intro done, trigger GSAP Gate Open
+                startGateAnimation();
+            }
+        }
 
-/* --- SECTIONS --- */
-.content-section { padding: 100px 10%; }
+        function startGateAnimation() {
+            const tl = gsap.timeline();
+            tl.to(".loader-bar", { width: "100%", duration: 0.8, ease: "power2.inOut" })
+              .to(".loader-content", { opacity: 0, duration: 0.5 })
+              .to(".gate-left", { x: "-100%", duration: 1.5, ease: "power4.inOut" }, "open")
+              .to(".gate-right", { x: "100%", duration: 1.5, ease: "power4.inOut" }, "open")
+              .from(".hero-title", { y: 50, opacity: 0, duration: 1 }, "-=1")
+              .set(".gate-wrapper", { display: "none" }); // Remove from DOM
+        }
 
-.hero {
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-}
+        // Start typing on load
+        document.addEventListener("DOMContentLoaded", typeEffect);
 
-.hero-title { font-size: 3.5rem; margin-bottom: 20px; line-height: 1.1; }
+        // --- 2. EXISTING SCRIPTS ---
+        AOS.init({ duration: 1000, once: true });
 
-.section-title {
-    font-size: 2.5rem;
-    margin-bottom: 50px;
-    border-left: 5px solid var(--primary);
-    padding-left: 20px;
-}
+        const cursorDot = document.querySelector(".cursor-dot");
+        const cursorOutline = document.querySelector(".cursor-outline");
 
-/* --- ABOUT ME STYLES --- */
-.about-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.about-text {
-    max-width: 800px;
-    line-height: 1.8;
-    font-size: 1.1rem;
-    color: #e2e8f0;
-}
-
-.about-text strong {
-    color: var(--primary);
-    font-weight: 600;
-}
-
-.social-links {
-    margin-top: 25px;
-    display: flex;
-    gap: 20px;
-}
-
-.social-links a {
-    color: var(--text);
-    font-size: 1.5rem;
-    transition: 0.3s;
-}
-
-.social-links a:hover {
-    color: var(--primary);
-    transform: translateY(-3px);
-}
-
-/* --- GLASSMORPHISM CARDS --- */
-.card {
-    background: var(--glass);
-    backdrop-filter: blur(10px);
-    border: 1px solid var(--border);
-    border-radius: 20px;
-    padding: 40px;
-    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    position: relative;
-    overflow: hidden;
-}
-
-.card:hover {
-    border-color: var(--primary);
-    transform: translateY(-10px);
-    box-shadow: 0 20px 40px rgba(0,0,0,0.4);
-}
-
-/* --- GRIDS & LAYOUTS --- */
-.project-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 30px;
-}
-
-.status-card { text-align: left; }
-.cert-card { text-align: center; max-width: 500px; margin: 0 auto; }
-
-/* --- TEXT & BUTTONS --- */
-.gradient-text {
-    background: linear-gradient(90deg, var(--primary), var(--secondary));
-    -webkit-background-clip: text; /* Vendor prefix first */
-    background-clip: text;         /* Standard property */
-    -webkit-text-fill-color: transparent;
-    font-weight: 800;
-}
-
-.btn-primary {
-    padding: 15px 40px;
-    border: 1px solid var(--primary);
-    color: var(--primary);
-    text-decoration: none;
-    border-radius: 50px;
-    transition: 0.3s;
-    margin-top: 30px;
-    display: inline-block;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    font-size: 0.9rem;
-}
-
-.btn-primary:hover {
-    background: var(--primary);
-    color: var(--bg);
-    box-shadow: 0 0 25px var(--primary);
-}
-
-.tags span {
-    display: inline-block;
-    font-size: 0.8rem;
-    color: var(--primary);
-    border: 1px solid var(--border);
-    padding: 5px 10px;
-    border-radius: 5px;
-    margin-right: 5px;
-    margin-top: 10px;
-}
-
-footer {
-    text-align: center;
-    padding: 40px;
-    opacity: 0.5;
-    font-size: 0.8rem;
-}
+        window.addEventListener("mousemove", (e) => {
+            const posX = e.clientX;
+            const posY = e.clientY;
+            cursorDot.style.left = `${posX}px`;
+            cursorDot.style.top = `${posY}px`;
+            cursorOutline.animate({ left: `${posX}px`, top: `${posY}px` }, { duration: 500, fill: "forwards" });
+        });
+    </script>
+</body>
+</html>
