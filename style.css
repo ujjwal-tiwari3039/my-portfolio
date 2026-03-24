@@ -1,187 +1,212 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio | Innovator</title>
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
+/* --- 1. Global Reset & Performance Enhancements --- */
+:root {
+    --bg-dark: #070708;
+    --card-bg: rgba(22, 22, 26, 0.7);
+    --accent-primary: #00f2fe;
+    --accent-secondary: #4facfe;
+    --text-main: #f0f0f0;
+    --text-dim: #94a3b8;
+    --font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
+    --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1); /* Ultra smooth easing */
+}
 
-    <div class="gate-wrapper">
-        <div class="gate-left"></div>
-        <div class="gate-right"></div>
-        
-        <div class="loader-content">
-            <div id="typing-text" class="typing-text"></div>
-            <div class="loader-bar"></div>
-        </div>
-    </div>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    cursor: none;
+}
 
-    <div class="cursor-outline"></div>
-    <div class="cursor-dot"></div>
+body {
+    background-color: var(--bg-dark);
+    color: var(--text-main);
+    font-family: var(--font-family);
+    overflow-x: hidden;
+    /* Subtle Grid Background - very "Arch Linux" */
+    background-image: 
+        linear-gradient(rgba(0, 242, 254, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 242, 254, 0.03) 1px, transparent 1px);
+    background-size: 50px 50px;
+}
 
-    <nav>
-        <div class="logo">RAiot<span>.Labs</span></div>
-        <ul>
-            <li><a href="#hero">Home</a></li>
-            <li><a href="#bio">About</a></li>
-            <li><a href="#status">Status</a></li>
-            <li><a href="#projects">Work</a></li>
-        </ul>
-    </nav>
+/* --- 2. Enhanced Intro Gates --- */
+.gate-left, .gate-right {
+    flex: 1;
+    background: #000;
+    height: 100%;
+    position: relative;
+    border: 1px solid #111;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 
-    <header id="hero">
-        <div class="hero" data-aos="zoom-out-up">
-            <h1 class="hero-title">Building the <span class="gradient-text">Future</span></h1>
-            <p>B.Tech CSE | Python Developer | IoT Engineer</p>
-            <div class="hero-btns">
-                <a href="#projects" class="btn-primary">View Projects</a>
-            </div>
-        </div>
-    </header>
+.loader-bar {
+    width: 0%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--accent-primary), transparent);
+    box-shadow: 0 0 20px var(--accent-primary);
+    border-radius: 10px;
+}
 
-    <section id="bio" class="content-section" data-aos="fade-up">
-        <div class="about-container">
-            <div class="about-text card">
-                <h2 class="section-title">Who <span class="gradient-text">Am I</span></h2>
-                <p>
-                    I am <strong>Ujjwal Tiwari a B.tech CSE student</strong> and a tech enthusiast who loves bridging the gap between software and the real world. 
-                </p>
-                <br>
-                <p>
-                    Currently a trainee at <strong>RAiot Labs</strong>, I spend my days building <strong>IoT architectures</strong> and coding intelligent systems like my voice assistant, <strong>Bixu</strong>.
-                </p>
-                <br>
-                <p>
-                    I don't just write code; I optimize workflows. As an <strong>Arch Linux (Hyprland)</strong> user, I value efficiency and performance in everything I build—whether it's a Python algorithm or a 1-meter RC plane fuselage.
-                </p>
-                
-                <div class="social-links">
-                    <a href="#"><i class="fab fa-github"></i></a>
-                    <a href="#"><i class="fab fa-linkedin"></i></a>
-                    <a href="mailto:your-email@example.com"><i class="fas fa-envelope"></i></a>
-                </div>
-            </div>
-        </div>
-    </section>
+/* --- 3. Fluid Custom Cursor --- */
+.cursor-dot {
+    width: 6px;
+    height: 6px;
+    background-color: var(--accent-primary);
+    box-shadow: 0 0 10px var(--accent-primary);
+    transition: width 0.3s var(--ease-out-expo), height 0.3s var(--ease-out-expo);
+}
 
-    <section id="status" class="content-section" data-aos="fade-up">
-        <h2 class="section-title">Current Focus</h2>
-        <div class="card status-card">
-            <div class="card-content">
-                <h3><i class="fas fa-microchip"></i> Trainee @ RAiot Labs</h3>
-                <p>Currently specializing in <strong>IoT Architecture</strong>, mastering <strong>Python</strong> for AI integration, and building full-stack hardware solutions.</p>
-                <div class="tags">
-                    <span>IoT</span><span>Python</span><span>Linux</span><span>HTML/CSS</span>
-                </div>
-            </div>
-        </div>
-    </section>
+.cursor-outline {
+    width: 35px;
+    height: 35px;
+    border: 1.5px solid rgba(0, 242, 254, 0.5);
+    transition: all 0.2s ease-out;
+}
 
-    <section id="projects" class="content-section">
-        <h2 class="section-title" data-aos="fade-up">My Creations</h2>
-        <div class="project-grid">
-            <div class="card" data-aos="fade-up" data-aos-delay="100">
-                <div class="card-content">
-                    <h3>Bixu AI Assistant</h3>
-                    <p>Voice-activated assistant powered by local Ollama LLMs and Python.</p>
-                </div>
-            </div>
-            <div class="card" data-aos="fade-up" data-aos-delay="200">
-                <div class="card-content">
-                    <h3>Smart Attendance</h3>
-                    <p>Facial recognition system with IoT sensors built at RAiot Labs.</p>
-                </div>
-            </div>
-            <div class="card" data-aos="fade-up" data-aos-delay="300">
-                <div class="card-content">
-                    <h3>RC Aero-Design</h3>
-                    <p>Custom 1-meter fuselage RC plane design for IIT Techfests.</p>
-                </div>
-            </div>
-        </div>
-    </section>
+/* --- 4. Glowing Navbar --- */
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 25px 8%;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 100;
+    background: rgba(7, 7, 8, 0.6);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
 
-    <section id="certs" class="content-section" data-aos="fade-up">
-        <h2 class="section-title">Certifications</h2>
-        <div class="card cert-card">
-            <i class="fas fa-award gradient-text" style="font-size: 3rem; margin-bottom: 15px;"></i>
-            <h3>Oracle Certified Professional</h3>
-            <p>Expertise in Java and Database Management.</p>
-        </div>
-    </section>
+.logo {
+    font-size: 1.4rem;
+    font-weight: 800;
+    letter-spacing: 3px;
+    text-shadow: 0 0 15px rgba(0, 242, 254, 0.3);
+}
 
-    <footer>
-        <p>Built on Windows • Deployed with Git</p>
-    </footer>
+nav ul li a {
+    position: relative;
+    padding: 5px 0;
+}
 
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script>
-        // --- 1. TYPING INTRO & GATE ANIMATION LOGIC ---
-        const textElement = document.getElementById("typing-text");
-        const phrases = ["Initializing System...", "Welcome to my Workspace."];
-        let phraseIndex = 0;
-        let charIndex = 0;
-        let isDeleting = false;
+nav ul li a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background: var(--accent-primary);
+    transition: width 0.4s var(--ease-out-expo);
+}
 
-        function typeEffect() {
-            const currentPhrase = phrases[phraseIndex];
-            
-            if (isDeleting) {
-                textElement.textContent = currentPhrase.substring(0, charIndex--);
-            } else {
-                textElement.textContent = currentPhrase.substring(0, charIndex++);
-            }
+nav ul li a:hover::after {
+    width: 100%;
+}
 
-            let typeSpeed = isDeleting ? 50 : 100;
+/* --- 5. Hero & Floating Animation --- */
+header {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
 
-            if (!isDeleting && charIndex === currentPhrase.length) {
-                typeSpeed = 1000; // Pause at end of phrase
-                isDeleting = true;
-            } else if (isDeleting && charIndex === 0) {
-                isDeleting = false;
-                phraseIndex++;
-                typeSpeed = 500;
-            }
+.hero-title {
+    font-size: clamp(3rem, 8vw, 5.5rem); /* Responsive typography */
+    font-weight: 800;
+    line-height: 1.1;
+    animation: float 6s ease-in-out infinite;
+}
 
-            if (phraseIndex < phrases.length) {
-                setTimeout(typeEffect, typeSpeed);
-            } else {
-                // Intro done, trigger GSAP Gate Open
-                startGateAnimation();
-            }
-        }
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-15px); }
+}
 
-        function startGateAnimation() {
-            const tl = gsap.timeline();
-            tl.to(".loader-bar", { width: "100%", duration: 0.8, ease: "power2.inOut" })
-              .to(".loader-content", { opacity: 0, duration: 0.5 })
-              .to(".gate-left", { x: "-100%", duration: 1.5, ease: "power4.inOut" }, "open")
-              .to(".gate-right", { x: "100%", duration: 1.5, ease: "power4.inOut" }, "open")
-              .from(".hero-title", { y: 50, opacity: 0, duration: 1 }, "-=1")
-              .set(".gate-wrapper", { display: "none" }); // Remove from DOM
-        }
+/* --- 6. Modern Cards with Glassmorphism --- */
+.card {
+    background: var(--card-bg);
+    padding: 2rem;
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(5px);
+    transition: transform 0.4s var(--ease-out-expo), 
+                border-color 0.4s var(--ease-out-expo),
+                box-shadow 0.4s var(--ease-out-expo);
+}
 
-        // Start typing on load
-        document.addEventListener("DOMContentLoaded", typeEffect);
+.card:hover {
+    transform: translateY(-8px) scale(1.02);
+    border-color: rgba(0, 242, 254, 0.4);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 
+                0 0 20px rgba(0, 242, 254, 0.1);
+}
 
-        // --- 2. EXISTING SCRIPTS ---
-        AOS.init({ duration: 1000, once: true });
+.status-card {
+    border-left: 4px solid var(--accent-primary);
+}
 
-        const cursorDot = document.querySelector(".cursor-dot");
-        const cursorOutline = document.querySelector(".cursor-outline");
+/* --- 7. Buttons & Interactions --- */
+.btn-primary {
+    position: relative;
+    padding: 15px 40px;
+    background: transparent;
+    color: var(--accent-primary);
+    border: 1px solid var(--accent-primary);
+    border-radius: 4px; /* Sharper, "dev" look */
+    overflow: hidden;
+    transition: 0.4s;
+    z-index: 1;
+}
 
-        window.addEventListener("mousemove", (e) => {
-            const posX = e.clientX;
-            const posY = e.clientY;
-            cursorDot.style.left = `${posX}px`;
-            cursorDot.style.top = `${posY}px`;
-            cursorOutline.animate({ left: `${posX}px`, top: `${posY}px` }, { duration: 500, fill: "forwards" });
-        });
-    </script>
-</body>
-</html>
+.btn-primary:hover {
+    color: #000;
+    box-shadow: 0 0 30px rgba(0, 242, 254, 0.5);
+}
+
+.btn-primary::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: var(--accent-primary);
+    transition: 0.4s var(--ease-out-expo);
+    z-index: -1;
+}
+
+.btn-primary:hover::before {
+    left: 0;
+}
+
+/* --- 8. Section Headers --- */
+.section-title {
+    margin-bottom: 3rem;
+    font-size: 2.5rem;
+    position: relative;
+    display: inline-block;
+}
+
+/* --- 9. Scrollbar --- */
+::-webkit-scrollbar {
+    width: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--bg-dark);
+}
+
+::-webkit-scrollbar-thumb {
+    background: #222;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--accent-primary);
+}
